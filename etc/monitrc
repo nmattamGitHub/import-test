@@ -1,0 +1,6 @@
+set logfile /var/log/monit.log
+
+check process example with pidfile /home/grails/example.pid
+  start program = "/bin/bash -c 'java -jar docker-example.war'"
+  stop program = "/bin/bash -c '/bin/kill `/bin/cat /home/grails/example.pid`'"
+  if 3 restarts within 3 cycles then alert
