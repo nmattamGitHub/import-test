@@ -1,0 +1,23 @@
+Examples of Grails app running in Docker container
+
+* Docker Image
+
+  To build the docker image based on the =Dockerfile= in the project,
+  run the following command:
+
+#+BEGIN_SRC bash
+docker build . -t grailsapp
+#+END_SRC
+
+  To run container:
+
+#+BEGIN_SRC bash
+docker run -i -t -p 9000:8080 grailsapp
+#+END_SRC
+
+
+  To delete image, if needs to be rebuilt for testing purposes:
+
+#+BEGIN_SRC bash
+docker rmi grailsapp --force
+#+END_SRC
