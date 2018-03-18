@@ -1,10 +1,10 @@
-# To create image, docker build . -t <imagename>
+# To create image, docker build . -t grailsapp
 # Pull base image.
 FROM debian
 
 RUN apt-get update
 # gpg is needed to verify package signature.
-RUN apt-get install --no-install-recommends --no-install-suggests -y gpg
+RUN apt-get install --no-install-recommends --no-install-suggests -y gpg sudo
 RUN apt-get install --no-install-recommends --no-install-suggests -y curl software-properties-common monit
 
 # Install java.
@@ -17,7 +17,8 @@ RUN \
 rm -rf /var/cache/oracle-jdk8-installer
 
 # Create specific user
-RUN useradd --create-home --shell /bin/bash grails
+RUN useradd --create-home --shell /bin/bash grails && adduser grails sudo
+RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER grails
 WORKDIR /home/grails
 
@@ -28,8 +29,8 @@ COPY ./etc/monitrc /etc/monit/conf.d/example.conf
 COPY --chown=grails ./build/libs/docker-example.war /home/grails
 
 # Define default command.
-CMD /etc/init.d/monit start && bash
+CMD sudo /etc/init.d/monit start && bash
 
 
 # To run:
-#   docker run -i -t -p 9000:8080 javaimage
+#   docker run -i -t -p 9000:8080 grailsapp
