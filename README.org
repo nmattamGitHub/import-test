@@ -28,3 +28,7 @@ docker ps
 #+BEGIN_SRC bash
 docker rmi grailsapp --force
 #+END_SRC
+
+* License
+
+  Copyright (c) 2018  Sébastien Le Callonnec.  Licensed under GPLv3.
