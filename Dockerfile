@@ -25,6 +25,7 @@ WORKDIR /home/grails
 # Define commonly used JAVA_HOME variable
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 
+COPY ./bin/grailsapp.sh /home/grails
 COPY ./etc/monitrc /etc/monit/conf.d/example.conf
 COPY --chown=grails ./build/libs/docker-example.war /home/grails
 
