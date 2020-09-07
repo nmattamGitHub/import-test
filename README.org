@@ -1,4 +1,4 @@
-## Migrate BB to GH imple edit
+# Migrate BB to GH
 Examples of Grails app running in Docker container
 
 * Docker
@@ -32,4 +32,4 @@ docker rmi grailsapp --force
 
 * License
 
-  Copyright (c) 2018  S‚bastien Le Callonnec.  Licensed under GPLv3.
+  Copyright (c) 2018  Sâ€šbastien Le Callonnec.  Licensed under GPLv3.
